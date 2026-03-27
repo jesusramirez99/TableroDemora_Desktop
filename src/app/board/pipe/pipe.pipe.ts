@@ -79,6 +79,12 @@ export class PipePipe implements PipeTransform {
       case 'SA':
           valueFormated = 'SABLINAS';
         break;
+      case 'CHS':
+      case 'CHN':
+      case 'CHS ':
+      case 'CHN ':
+          valueFormated = 'TABALAOPA';
+        break;
       default: 
         valueFormated = '';
         break;
