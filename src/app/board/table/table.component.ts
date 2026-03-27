@@ -3,11 +3,7 @@ import { RequestHttpService } from 'src/app/service/request-http.service';
 import { OnInit } from '@angular/core';
 import { DataTable } from 'src/app/interface/dataTable.interface';
 import Swal from 'sweetalert2';
-import { ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { interval, map } from 'rxjs';
-
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -20,13 +16,9 @@ export class TableComponent implements OnInit {
   public dataTable: DataTable[] = [];
   public lastDate: Date = new Date();
   public minDate: Date = new Date(0); 
-  
   minRegistrosParaPaginar = 16;
   autoPageIntervalMs = 60000; //Tiempo para cambiar de pagina
-  private autoPageTimer: any;
   private refreshTimer: any;
-  private ultimoTotal = 0;
-
 
   ngOnInit(){
     this.cargarDatos();
@@ -73,7 +65,6 @@ export class TableComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if(this.autoPageTimer)clearInterval(this.autoPageTimer);
     if(this.refreshTimer)clearInterval(this.refreshTimer);
   }
 
